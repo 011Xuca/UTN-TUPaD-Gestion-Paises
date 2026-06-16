@@ -1,11 +1,18 @@
 # Agrega un nuevo pais a la lista
 def agregar_pais(paises, nombre, poblacion, superficie, continente):
+    if not nombre or poblacion <= 0 or superficie <= 0 or not continente:
+        raise ValueError("Todos los campos son obligatorios y deben ser validos.")
+    
+    if any(p["nombre"].lower() == nombre.lower() for p in paises):
+        raise ValueError("El pais ya existe en la lista.")
+    
     paises.append({
         "nombre": nombre.strip().title(),
         "poblacion": poblacion,
         "superficie": superficie,
         "continente": continente.strip().title(),
     })
+    print("Pais agregado.\n")
 
 # Busca un pais por nombre y actualiza su poblacion y superficie
 def actualizar_pais(paises, nombre, poblacion, superficie):

@@ -125,8 +125,12 @@ while True:
     op = input("Opcion: ")
     print("-" * 58)
     if op == "1":
-        gestion.agregar_pais(paises, leer_texto("Nombre: "), leer_entero("Poblacion: "), leer_entero("Superficie: "), leer_texto("Continente: "))
-        print("Pais agregado.\n")
+        try:
+            gestion.agregar_pais(paises, leer_texto("Nombre: "), leer_entero("Poblacion: "), leer_entero("Superficie: "), leer_texto("Continente: "))
+            print("Pais agregado.\n")
+        except ValueError as error:
+            print(f"Error al querer registrar el pais: {error}\n")
+            
     elif op == "2":
         nombre = leer_texto("Nombre del pais: ")
         
