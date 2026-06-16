@@ -127,7 +127,6 @@ while True:
     if op == "1":
         try:
             gestion.agregar_pais(paises, leer_texto("Nombre: "), leer_entero("Poblacion: "), leer_entero("Superficie: "), leer_texto("Continente: "))
-            print("Pais agregado.\n")
         except ValueError as error:
             print(f"Error al querer registrar el pais: {error}\n")
             
