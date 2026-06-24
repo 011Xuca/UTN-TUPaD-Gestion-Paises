@@ -1,7 +1,16 @@
 # Agrega un nuevo pais a la lista
+
 def agregar_pais(paises, nombre, poblacion, superficie, continente):
-    if not nombre or poblacion <= 0 or superficie <= 0 or not continente:
+    if not nombre.isalpha():
+        raise ValueError("El nombre del pais debe contener solo letras.")
+    
+    if not nombre or poblacion < 0 or superficie < 0 or not continente:
         raise ValueError("Todos los campos son obligatorios y deben ser validos.")
+    
+    continentes = ["Africa", "America", "Asia", "Europa", "Oceania"]
+    
+    if continente.title() not in continentes:
+        raise ValueError(f"Continente invalido. Debe ser uno de: {', '.join(continentes)}.")
     
     if any(p["nombre"].lower() == nombre.lower() for p in paises):
         raise ValueError("El pais ya existe en la lista.")

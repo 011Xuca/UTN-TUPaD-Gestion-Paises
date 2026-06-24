@@ -1,14 +1,6 @@
 import archivos
 import gestion
 
-# Ruta del archivo donde se guardan los datos de los paises
-ARCHIVO_CSV = "datos/paises.csv"
-
-# Carga los paises al iniciar el programa
-paises = archivos.cargar_paises(ARCHIVO_CSV)
-
-print("\n" +"-" * 58 + f"\nSe cargaron {len(paises)} paises.")
-
 # Pide un texto al usuario y valida que no este vacio
 def leer_texto(mensaje):
     while True:
@@ -30,7 +22,7 @@ def leer_entero(mensaje):
             
             print("Error: no puede ser negativo.")
         except ValueError:
-            print("Error: debe ingresar un número entero.")
+            print("Error: debe ingresar un numero entero.")
 
 # Muestra una lista de paises en formato de tabla
 def mostrar_paises(paises):
@@ -109,6 +101,14 @@ def mostrar_estadisticas(paises):
     for continente, cantidad in estadisticas["por_continente"].items():
         print(f" - {continente.title()}: {cantidad}")
 
+# Ruta del archivo donde se guardan los datos de los paises
+ARCHIVO_CSV = "datos/paises.csv"
+
+# Carga los paises al iniciar el programa
+paises = archivos.cargar_paises(ARCHIVO_CSV)
+
+print("\n" +"-" * 58 + f"\nSe cargaron {len(paises)} paises.")
+
 # Bucle principal del programa: muestra el menu y procesa la opcion elegida
 while True:
     print("MENU DE GESTION DE PAISES".center(58, "-"))
@@ -124,6 +124,7 @@ while True:
     print("-" * 58)
     op = input("Opcion: ")
     print("-" * 58)
+    
     if op == "1":
         try:
             gestion.agregar_pais(paises, leer_texto("Nombre: "), leer_entero("Poblacion: "), leer_entero("Superficie: "), leer_texto("Continente: "))
@@ -141,20 +142,26 @@ while True:
     elif op == "3":
         mostrar_paises(gestion.buscar_pais(paises, leer_texto("Buscar: ")))
         print("-" * 58)
+        
     elif op == "4":
         mostrar_paises(menu_filtrar(paises))
         print("-" * 58)
+        
     elif op == "5":
         mostrar_paises(menu_ordenar(paises))
         print("-" * 58)
+        
     elif op == "6":
         mostrar_estadisticas(paises)
         print("-" * 58)
+        
     elif op == "7":
         mostrar_paises(paises)
+        
     elif op == "8":
         if archivos.guardar_paises(ARCHIVO_CSV, paises):
             print("Datos guardados. ¡Hasta luego!")
         break
+    
     else:
         print("Opcion invalida.\n")
