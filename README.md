@@ -105,4 +105,4 @@ El programa contempla, entre otros, los siguientes casos:
 
 ## Links del proyecto
 - Repositorio en GitHub: https://github.com/011Xuca/UTN-TUPaD-Gestion-Paises
-- Video demostrativo: ...
+- Video demostrativo: https://youtu.be/wONeS6oE4CY
